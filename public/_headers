@@ -1,0 +1,20 @@
+# Vite-built JS/CSS are content-hashed — safe to cache forever
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Media isn't filename-hashed, so cache for a week and let the CDN
+# revalidate in the background rather than caching forever
+/videos/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/icons/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/favicon/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# HTML should always be revalidated so content edits go live immediately
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate

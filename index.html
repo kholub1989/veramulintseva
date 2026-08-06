@@ -1,57 +1,696 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Vera Mulintseva</title>
-  <meta
-    name="description"
-    content="Vera Mulintseva's personal website is currently under construction."
-  >
-
-  <style>
-    * {
-      box-sizing: border-box;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8f5f1" />
+  <meta name="author" content="Vera Mulintseva" />
+  <meta name="description"
+    content="Vera Mulintseva is a NYC-based UGC creator producing authentic content for beauty, wellness, skincare, running, travel, and lifestyle brands." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vera Mulintseva | UGC Creator" />
+  <meta property="og:description"
+    content="NYC-based UGC creator producing authentic content for beauty, wellness, skincare, running, travel, and lifestyle brands." />
+  <meta property="og:url" content="https://www.veramulintseva.com/" />
+  <meta property="og:site_name" content="Vera Mulintseva Portfolio" />
+  <meta property="og:image" content="https://www.veramulintseva.com/images/hero/vera-portrait.webp" />
+  <meta property="og:image:width" content="1575" />
+  <meta property="og:image:height" content="2362" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vera Mulintseva | UGC Creator" />
+  <meta name="twitter:description"
+    content="NYC-based UGC creator producing authentic content for beauty, wellness, skincare, running, travel, and lifestyle brands." />
+  <meta name="twitter:image" content="https://www.veramulintseva.com/images/hero/vera-portrait.webp" />
+  <title>Vera Mulintseva | UGC Creator</title>
+  <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vera Mulintseva",
+      "url": "https://www.veramulintseva.com/",
+      "image": "https://www.veramulintseva.com/images/hero/vera-portrait.webp",
+      "jobTitle": "UGC Creator",
+      "description": "NYC-based UGC creator producing authentic content for beauty, wellness, skincare, running, travel, and lifestyle brands.",
+      "email": "mailto:veramulintseva.info@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://instagram.com/veramulintseva",
+        "https://tiktok.com/@veramulintseva"
+      ]
     }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f7f7;
-      color: #222;
-    }
-
-    .coming-soon {
-      max-width: 420px;
-      text-align: center;
-    }
-
-    .coming-soon__name {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      font-weight: 600;
-      line-height: 1.1;
-    }
-
-    .coming-soon__message {
-      margin: 0;
-      font-size: 1rem;
-      color: #666;
-    }
-  </style>
+  </script>
 </head>
 
-<body>
-  <main class="coming-soon">
-    <h1 class="coming-soon__name">Vera Mulintseva</h1>
-    <p class="coming-soon__message">
-      Website under construction.
-    </p>
+<body id="home">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-logo" href="/" aria-label="Vera Mulintseva home">
+        <img src="/images/vm-logo.png" alt="Vera Mulintseva Logo" width="64" height="64" />
+      </a>
+      <button class="navigation-toggle" type="button" aria-label="Open navigation" aria-expanded="false"
+        aria-controls="primary-navigation">
+        <svg class="icon icon-menu" width="24" height="24" aria-hidden="true">
+          <use href="/icons/sprite.svg#icon-menu" />
+        </svg>
+        <svg class="icon icon-close" width="24" height="24" aria-hidden="true" hidden>
+          <use href="/icons/sprite.svg#icon-close" />
+        </svg>
+      </button>
+      <nav class="navigation" id="primary-navigation" aria-label="Primary navigation">
+        <a class="navigation-link" href="#top">Home</a>
+        <a class="navigation-link" href="#portfolio">Portfolio</a>
+        <a class="navigation-link" href="#about">About</a>
+        <a class="navigation-link" href="#services">Services</a>
+        <a class="navigation-link" href="#process">Process</a>
+        <a class="navigation-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow">NYC-Based UGC Creator</p>
+
+          <h1>Vera Mulintseva</h1>
+
+          <p class="hero__description">
+            Real-life content for beauty, wellness, running, travel, and lifestyle brands.
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#portfolio">
+              View Portfolio
+              <svg class="icon" width="24" height="24" aria-hidden="true">
+                <use href="/icons/sprite.svg#icon-arrow-right" />
+              </svg>
+            </a>
+
+            <div class="hero__social-wrapper">
+              <a class="button button--secondary" href="#contact">
+                Let's Work Together
+              </a>
+              <div class="hero__social">
+                <a href="https://instagram.com/veramulintseva" target="_blank" rel="noreferrer" aria-label="Instagram">
+                  <svg class="icon" width="24" height="24" aria-hidden="true">
+                    <use href="/icons/sprite.svg#icon-instagram" />
+                  </svg>
+                </a>
+                <a href="https://tiktok.com/@veramulintseva" target="_blank" rel="noreferrer" aria-label="TikTok">
+                  <svg class="icon" width="24" height="24" aria-hidden="true">
+                    <use href="/icons/sprite.svg#icon-tiktok" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <div class="hero__image-wrapper">
+            <img class="hero__image" src="/images/hero/vera-portrait.webp" alt="Vera Mulintseva Portrait"
+              loading="eager" fetchpriority="high" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trusted-by" aria-labelledby="trusted-by-title">
+      <div class="container">
+        <h2 class="section-label" id="trusted-by-title">
+          Trusted By
+        </h2>
+
+        <div class="brand-carousel">
+          <div class="brand-carousel__track">
+            <div class="brand-carousel__item">
+              <img src="/images/brands/clarins.png" alt="Clarins" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/shiseido.png" alt="Shiseido" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/luxury-escapes.png" alt="Luxury Escapes" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/murad.png" alt="Murad" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/orzax.png" alt="Orzax" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/wigwam.png" alt="Wigwam" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/borghese.png" alt="Borghese" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/inyoe.png" alt="Inyoe" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item">
+              <img src="/images/brands/good-mood-brew.png" alt="Good Mood Brew" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/clarins.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/shiseido.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/luxury-escapes.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/murad.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/orzax.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/wigwam.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/borghese.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/inyoe.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+            <div class="brand-carousel__item" aria-hidden="true">
+              <img src="/images/brands/good-mood-brew.png" alt="" width="160" height="50" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Selected Work</p>
+            <h2>Featured UGC Videos</h2>
+          </div>
+
+          <p>
+            Short-form videos created for organic social, product storytelling, and paid campaigns.
+          </p>
+        </div>
+
+        <div class="filter-list" aria-label="Video categories">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+            All
+          </button>
+
+          <button class="filter-button" type="button" data-filter="beauty-wellness" aria-pressed="false">
+            Beauty & Wellness
+          </button>
+
+          <button class="filter-button" type="button" data-filter="running" aria-pressed="false">
+            Running
+          </button>
+
+          <button class="filter-button" type="button" data-filter="product" aria-pressed="false">
+            Product
+          </button>
+
+          <button class="filter-button" type="button" data-filter="travel" aria-pressed="false">
+            Travel
+          </button>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card" data-category="travel">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/luxury-escapes.jpg" aria-label="Luxury Escapes travel storytelling video">
+              <source src="/videos/luxury-escapes.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Luxury Escapes</h3>
+              <p>Travel Storytelling</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="product">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/levis.jpg" aria-label="Levi's Product Detail Showcase">
+              <source src="/videos/levis.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Levi's</h3>
+              <p>Product Detail Showcase</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="beauty-wellness">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/morning-routine.jpg" aria-label="">
+              <source src="/videos/morning-routine.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>UOOA Clean Lash Line</h3>
+              <p>Skincare Product Demo</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="product">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/orahealth-antacid-melts.jpg"
+              aria-label="OraHealth antacid melts product demonstration">
+              <source src="/videos/orahealth-antacid-melts.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>OraHealth</h3>
+              <p>Product Demonstration</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="product">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/ordinary.jpg"
+              aria-label="The Ordinary skincare">
+              <source src="/videos/ordinary.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>The Ordinary</h3>
+              <p>Macro Product Showcase</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="beauty-wellness">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/orzax.jpg"
+              aria-label="Orzax Wellness Product Storytelling">
+              <source src="/videos/orzax.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Orzax</h3>
+              <p>Wellness Product Storytelling</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="beauty-wellness">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/shower-routine.jpg" aria-label="Shower routine wellness video">
+              <source src="/videos/shower-routine.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>The Hair Method</h3>
+              <p>Haircare Routine</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="running">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/skratch.jpg" aria-label="Skratch hydration running video">
+              <source src="/videos/skratch.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Skratch Labs</h3>
+              <p>Running & Hydration</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="running">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/protein-bar.jpg" aria-label="Protein bar running video">
+              <source src="/videos/protein-bar.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Super Snacks</h3>
+              <p>Lifestyle Product Showcase</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="running">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/magnezia-gel.jpg" aria-label="Magnezia gel running video">
+              <source src="/videos/magnezia-gel.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Magnezia</h3>
+              <p>Running & Recovery</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="beauty-wellness">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/super-pill.jpg" aria-label="Super Pill supplement product video">
+              <source src="/videos/super-pill.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Purity Products</h3>
+              <p>Supplement Routine</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="beauty-wellness">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/tensi-cream.jpg" aria-label="Tensi cream skincare product video">
+              <source src="/videos/tensi-cream.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Tensi by inyoe</h3>
+              <p>Skincare Product Demo</p>
+            </div>
+          </article>
+
+          <article class="video-card" data-category="running">
+            <video class="portfolio-video" controls muted loop playsinline preload="none"
+              data-poster="/images/video-posters/wigwam.jpg" aria-label="Wigwam running product campaign">
+              <source src="/videos/wigwam.mp4" type="video/mp4" />
+            </video>
+
+            <div class="video-card__content">
+              <h3>Wigwam</h3>
+              <p>Running Product Showcase</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="video-load-more">
+          <button class="button button--secondary" type="button" data-load-more-videos>
+            Load More
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--warm">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Photography</p>
+            <h2>Product & Lifestyle</h2>
+          </div>
+
+          <p>
+            Product photography and lifestyle imagery across beauty, wellness, running, and travel.
+          </p>
+        </div>
+
+        <div class="photo-grid">
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/clarins.webp" alt="Clarins Total Eye Lift" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--square">
+            <img src="/images/product/murad.webp" alt="Murad skincare" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/nogu.webp" alt="Nogu bracelet" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/shiseido.webp" alt="Shiseido skincare" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/wigwam.webp" alt="Wigwam socks" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/wigwam2.webp" alt="Winter running" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/skratch.webp" alt="Skratch hydration" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/wigwam3.webp" alt="Running lifestyle" loading="lazy" decoding="async">
+          </figure>
+
+          <figure class="photo-card photo-card--portrait">
+            <img src="/images/product/lipstick.webp" alt="Lipstick" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about">
+        <div>
+          <p class="eyebrow">About Vera</p>
+
+          <h2>Authentic content built around real experiences.</h2>
+        </div>
+
+        <div class="about__content">
+          <p>
+            Hi, I'm Vera, a NYC-based UGC creator and runner. I create beauty, wellness, running, travel, and lifestyle content built around real routines and everyday experiences. My work combines clear product demonstrations, natural storytelling, and a relatable on-camera presence.
+          </p>
+
+          <ul class="capability-list">
+            <li>Voiceovers</li>
+            <li>Product Demos</li>
+            <li>Lifestyle Content</li>
+            <li>Organic UGC</li>
+            <li>Paid Social Content</li>
+            <li>Product Photography</li>
+            <li>Short-form Video</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark services" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Services</p>
+            <h2>Content created for organic and paid campaigns.</h2>
+          </div>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <span>01</span>
+            <h3>UGC Videos</h3>
+            <p>
+              Product demonstrations, tutorials, voiceovers, routines, unboxings, and lifestyle storytelling.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span>02</span>
+            <h3>Paid Social Content</h3>
+            <p>
+              Ad-ready videos with hooks, product benefits, and clear calls to action.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span>03</span>
+            <h3>Organic Social Content</h3>
+            <p>
+              Natural, platform-native videos for Instagram, TikTok, and brand social channels.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span>04</span>
+            <h3>Product Photography</h3>
+            <p>
+              Product shots, flat lays, beauty, wellness, running, and lifestyle imagery.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Why Work With Me</p>
+            <h2>Professional, relatable, and easy to work with.</h2>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article>
+            <strong>NYC</strong>
+            <span>Based</span>
+          </article>
+
+          <article>
+            <strong>Languages</strong>
+            <span>English + Russian</span>
+          </article>
+
+          <article>
+            <strong>7 Days</strong>
+            <span>Turnaround</span>
+          </article>
+
+          <article>
+            <strong>Multi-Niche</strong>
+            <span>Beauty | Wellness | Running</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--warm" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">My Process</p>
+            <h2>From brief to final delivery.</h2>
+          </div>
+        </div>
+
+        <ol class="process-list">
+          <li>
+            <span>01</span>
+            <h3>Brief</h3>
+            <p>Goals & requirements</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Concept</h3>
+            <p>Creative direction</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Filming</h3>
+            <p>Content production</p>
+          </li>
+          <li>
+            <span>04</span>
+            <h3>Editing</h3>
+            <p>Polished final cut</p>
+          </li>
+          <li>
+            <span>05</span>
+            <h3>Review</h3>
+            <p>Up to 2 revisions</p>
+          </li>
+          <li>
+            <span>06</span>
+            <h3>Delivery</h3>
+            <p>Ready-to-use files</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container faq">
+        <div>
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions</h2>
+        </div>
+
+        <div class="faq__list">
+          <details>
+            <summary>Do you work with gifted collaborations?</summary>
+            <p>
+              I currently focus on paid collaborations. Gifted products may be considered in addition to a paid partnership.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you create paid ads?</summary>
+            <p>
+              Yes. I create content for both organic social campaigns and paid advertising.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you provide raw footage?</summary>
+            <p>
+              Raw footage, additional hooks, and alternate calls to action can
+              be included in the project scope.
+            </p>
+          </details>
+
+          <details>
+            <summary>What is your turnaround time?</summary>
+            <p>
+              Turnaround depends on the project scope. Timing and delivery
+              details are confirmed before production begins.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can you film in NYC?</summary>
+            <p>
+              Yes. I'm based in New York City and can create location-based content throughout the city.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's Work Together</h2>
+        <p class="contact__description">Tell me a little about your brand, product, and campaign. Rates are available upon request.</p>
+
+        <div class="contact-links">
+          <a class="button button--primary" href="mailto:veramulintseva.info@gmail.com">
+            Email me
+            <svg class="icon" width="24" height="24" aria-hidden="true">
+              <use href="/icons/sprite.svg#icon-envelope" />
+            </svg>
+          </a>
+          <a class="button button--secondary" href="https://instagram.com/veramulintseva" target="_blank" rel="noreferrer">
+            Instagram
+            <svg class="icon" width="24" height="24" aria-hidden="true">
+              <use href="/icons/sprite.svg#icon-instagram" />
+            </svg>
+          </a>
+          <a class="button button--secondary" href="https://tiktok.com/@veramulintseva" target="_blank" rel="noreferrer">
+            TikTok
+            <svg class="icon" width="24" height="24" aria-hidden="true">
+              <use href="/icons/sprite.svg#icon-tiktok" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <a class="site-logo" href="#top" aria-label="Back to top">
+        <img src="/images/vm-logo2.png" alt="Vera Mulintseva Logo" width="64" height="64" />
+      </a>
+
+      <p>© <span data-current-year></span> Vera Mulintseva</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>
