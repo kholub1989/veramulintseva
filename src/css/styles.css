@@ -691,7 +691,7 @@ h3 {
 
 .contact__description {
   max-width: 480px;
-  color: rgba(248, 245, 241, 0.85);
+  color: var(--color-surface);
 }
 
 .contact-links {
