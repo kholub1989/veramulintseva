@@ -255,8 +255,9 @@ const preloadVideo = (card) => {
 
 /**
  * Shows/hides video cards based on the active category and current
- * pagination limit, preloads newly visible videos, and updates the
- * "Load More" button's label/disabled state.
+ * pagination limit, and updates the "Load More" button's label/disabled
+ * state. Newly-shown cards are picked up by `preloadObserver` once they're
+ * actually near the viewport.
  *
  * @returns {void}
  */
@@ -271,9 +272,7 @@ const updateVideoGrid = () => {
 
     card.hidden = !shouldShow;
 
-    if (shouldShow) {
-      preloadVideo(card);
-    } else {
+    if (!shouldShow) {
       card.querySelector('.portfolio-video')?.pause();
     }
   });
@@ -346,19 +345,6 @@ const portfolioVideos = document.querySelectorAll(
   '.portfolio-video',
 );
 
-/**
- * Preloads every currently visible (non-hidden) video card.
- *
- * @returns {void}
- */
-const preloadVisiblePortfolioVideos = () => {
-  videoCards.forEach((card) => {
-    if (!card.hidden) {
-      preloadVideo(card);
-    }
-  });
-};
-
 const videoObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -380,19 +366,34 @@ const videoObserver = new IntersectionObserver(
   },
 );
 
+/**
+ * Preloads a video once it scrolls near the viewport, instead of every
+ * currently-paginated card preloading at page load regardless of position.
+ */
+const preloadObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target;
+      const card = video.closest('.video-card');
+
+      if (!entry.isIntersecting || card?.hidden) {
+        return;
+      }
+
+      preloadVideo(card);
+      preloadObserver.unobserve(video);
+    });
+  },
+  {
+    rootMargin: '800px 0px',
+    threshold: 0,
+  },
+);
+
 portfolioVideos.forEach((video) => {
   videoObserver.observe(video);
+  preloadObserver.observe(video);
 });
-
-if (document.readyState === 'complete') {
-  preloadVisiblePortfolioVideos();
-} else {
-  window.addEventListener(
-    'load',
-    preloadVisiblePortfolioVideos,
-    { once: true },
-  );
-}
 
 updateVideoGrid();
 
