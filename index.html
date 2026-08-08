@@ -416,39 +416,57 @@
 
         <div class="photo-grid">
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/clarins.webp" alt="Clarins Total Eye Lift" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/clarins.webp" alt="Clarins Total Eye Lift" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--square">
-            <img src="/images/product/murad.webp" alt="Murad skincare" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/murad.webp" alt="Murad skincare" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/nogu.webp" alt="Nogu bracelet" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/nogu.webp" alt="Nogu bracelet" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/shiseido.webp" alt="Shiseido skincare" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/shiseido.webp" alt="Shiseido skincare" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/wigwam.webp" alt="Wigwam socks" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/wigwam.webp" alt="Wigwam socks" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/wigwam2.webp" alt="Winter running" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/wigwam2.webp" alt="Winter running" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/skratch.webp" alt="Skratch hydration" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/skratch.webp" alt="Skratch hydration" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/wigwam3.webp" alt="Running lifestyle" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/wigwam3.webp" alt="Running lifestyle" loading="lazy" decoding="async">
+            </button>
           </figure>
 
           <figure class="photo-card photo-card--portrait">
-            <img src="/images/product/lipstick.webp" alt="Lipstick" loading="lazy" decoding="async">
+            <button type="button" class="photo-card__trigger" data-lightbox-trigger>
+              <img src="/images/product/lipstick.webp" alt="Lipstick" loading="lazy" decoding="async">
+            </button>
           </figure>
         </div>
       </div>
@@ -689,6 +707,28 @@
       <p>© <span data-current-year></span> Vera Mulintseva</p>
     </div>
   </footer>
+
+  <div class="lightbox" id="photo-lightbox" aria-hidden="true">
+    <button type="button" class="lightbox__backdrop" data-lightbox-close aria-label="Close preview"></button>
+    <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Photo preview">
+      <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close preview">
+        <svg class="icon" width="24" height="24" aria-hidden="true">
+          <use href="/icons/sprite.svg#icon-close" />
+        </svg>
+      </button>
+      <button type="button" class="lightbox__nav lightbox__prev" data-lightbox-prev aria-label="Previous photo">
+        <svg class="icon" width="24" height="24" aria-hidden="true">
+          <use href="/icons/sprite.svg#icon-arrow-right" />
+        </svg>
+      </button>
+      <img class="lightbox__image" src="" alt="">
+      <button type="button" class="lightbox__nav lightbox__next" data-lightbox-next aria-label="Next photo">
+        <svg class="icon" width="24" height="24" aria-hidden="true">
+          <use href="/icons/sprite.svg#icon-arrow-right" />
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
 </body>

@@ -52,9 +52,130 @@ navigation?.addEventListener('click', (event) => {
   }
 });
 
+// Photo grid lightbox
+const lightboxTriggers = [
+  ...document.querySelectorAll('[data-lightbox-trigger]'),
+];
+const lightboxEntries = lightboxTriggers.map((trigger) => {
+  const image = trigger.querySelector('img');
+
+  return { src: image.src, alt: image.alt };
+});
+
+const lightbox = document.querySelector('#photo-lightbox');
+const lightboxImage = lightbox?.querySelector('.lightbox__image');
+const lightboxCloseButtons = [
+  ...(lightbox?.querySelectorAll('[data-lightbox-close]') ?? []),
+];
+const lightboxPrevButton = lightbox?.querySelector(
+  '[data-lightbox-prev]',
+);
+const lightboxNextButton = lightbox?.querySelector(
+  '[data-lightbox-next]',
+);
+
+let lightboxIndex = 0;
+let lightboxTrigger = null;
+
+/**
+ * @param {number} index
+ * @returns {void}
+ */
+const renderLightboxImage = (index) => {
+  const entry = lightboxEntries[index];
+
+  if (!lightboxImage || !entry) {
+    return;
+  }
+
+  lightboxIndex = index;
+  lightboxImage.src = entry.src;
+  lightboxImage.alt = entry.alt;
+};
+
+/**
+ * @param {number} index
+ * @returns {void}
+ */
+const openLightbox = (index) => {
+  if (!lightbox) {
+    return;
+  }
+
+  lightboxTrigger = document.activeElement;
+  renderLightboxImage(index);
+  lightbox.classList.add('is-open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  lightboxCloseButtons[0]?.focus();
+};
+
+/**
+ * @returns {void}
+ */
+const closeLightbox = () => {
+  if (!lightbox) {
+    return;
+  }
+
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  lightboxTrigger?.focus();
+};
+
+/**
+ * @returns {boolean}
+ */
+const isLightboxOpen = () => {
+  return Boolean(lightbox?.classList.contains('is-open'));
+};
+
+/**
+ * @param {number} delta
+ * @returns {void}
+ */
+const showRelativeLightboxImage = (delta) => {
+  const nextIndex =
+    (lightboxIndex + delta + lightboxEntries.length) %
+    lightboxEntries.length;
+
+  renderLightboxImage(nextIndex);
+};
+
+lightboxTriggers.forEach((trigger, index) => {
+  trigger.addEventListener('click', () => {
+    openLightbox(index);
+  });
+});
+
+lightboxCloseButtons.forEach((button) => {
+  button.addEventListener('click', closeLightbox);
+});
+
+lightboxPrevButton?.addEventListener('click', () => {
+  showRelativeLightboxImage(-1);
+});
+
+lightboxNextButton?.addEventListener('click', () => {
+  showRelativeLightboxImage(1);
+});
+
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     closeNavigation();
+
+    if (isLightboxOpen()) {
+      closeLightbox();
+    }
+  }
+
+  if (isLightboxOpen() && event.key === 'ArrowLeft') {
+    showRelativeLightboxImage(-1);
+  }
+
+  if (isLightboxOpen() && event.key === 'ArrowRight') {
+    showRelativeLightboxImage(1);
   }
 });
 
