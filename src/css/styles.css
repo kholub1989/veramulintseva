@@ -159,18 +159,15 @@ h3 {
     position: absolute;
     left: 0;
     bottom: -4px;
-    width: 100%;
+    width: 0;
     height: 1px;
     background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
+    transition: width 0.3s ease;
   }
 
   .navigation-link:hover::after,
   .navigation-link:focus-visible::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    width: 100%;
   }
 }
 
@@ -850,6 +847,11 @@ h3 {
   .service-grid,
   .feature-grid {
     grid-template-columns: 1fr;
+  }
+
+  .feature-grid article {
+    min-height: 140px;
+    padding: 1.25rem;
   }
 
   .photo-grid {
