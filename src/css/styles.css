@@ -561,17 +561,15 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 90vw;
-  max-height: 90vh;
+  width: min(90vw, 670px);
+  height: min(80vh, 780px);
 }
 
 .lightbox__image {
   display: block;
-  max-width: 90vw;
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: var(--radius-medium);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
@@ -941,6 +939,21 @@ h3 {
 
   .lightbox {
     padding: 1rem;
+  }
+
+  .lightbox__dialog {
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  .lightbox__image {
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
   }
 
   .lightbox__close,
