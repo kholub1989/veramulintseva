@@ -256,12 +256,17 @@ const preloadVideo = (card) => {
 /**
  * Shows/hides video cards based on the active category and current
  * pagination limit, and updates the "Load More" button's label/disabled
- * state. Newly-shown cards are picked up by `preloadObserver` once they're
- * actually near the viewport.
+ * state.
  *
+ * @param {boolean} [preloadNewlyShown] - Eagerly preload cards that become
+ *   shown, for user-initiated reveals (filter switch, "Load More", viewport
+ *   breakpoint change) where the new cards are right where the user is
+ *   already looking. Left `false` for the initial page-load render, so
+ *   off-screen cards wait for `preloadObserver` instead of all preloading
+ *   at once regardless of position.
  * @returns {void}
  */
-const updateVideoGrid = () => {
+const updateVideoGrid = (preloadNewlyShown = false) => {
   const matchingCards = getMatchingVideoCards();
 
   videoCards.forEach((card) => {
@@ -272,7 +277,9 @@ const updateVideoGrid = () => {
 
     card.hidden = !shouldShow;
 
-    if (!shouldShow) {
+    if (shouldShow && preloadNewlyShown) {
+      preloadVideo(card);
+    } else if (!shouldShow) {
       card.querySelector('.portfolio-video')?.pause();
     }
   });
@@ -314,13 +321,13 @@ filterButtons.forEach((button) => {
       );
     });
 
-    updateVideoGrid();
+    updateVideoGrid(true);
   });
 });
 
 loadMoreButton?.addEventListener('click', () => {
   visibleVideoCount += getVideosPerLoad();
-  updateVideoGrid();
+  updateVideoGrid(true);
 });
 
 /**
@@ -332,7 +339,7 @@ loadMoreButton?.addEventListener('click', () => {
  */
 const handleViewportChange = () => {
   visibleVideoCount = getInitialVisibleCount();
-  updateVideoGrid();
+  updateVideoGrid(true);
 };
 
 desktopMediaQuery.addEventListener(
