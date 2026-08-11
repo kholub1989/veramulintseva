@@ -100,6 +100,19 @@ h3 {
   line-height: 1.25;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 .container {
   width: min(calc(100% - 2rem), var(--container-width));
   margin-inline: auto;
@@ -350,16 +363,6 @@ h3 {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .brand-carousel__track {
-    animation: none;
-  }
-
-  .brand-carousel {
-    overflow-x: auto;
-  }
-}
-
 .section {
   padding-block: clamp(5rem, 10vw, 9rem);
 }
@@ -435,6 +438,22 @@ h3 {
 
 .video-card:hover {
   transform: translateY(-8px);
+}
+
+.video-card--enter {
+  animation: card-fade-in 500ms ease both;
+}
+
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .video-card video {
@@ -772,15 +791,55 @@ h3 {
 }
 
 .faq__list summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   padding-block: 1.5rem;
   cursor: pointer;
   font-weight: 600;
+  list-style: none;
 }
 
-.faq__list p {
-  max-width: 700px;
+.faq__list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__marker {
+  flex-shrink: 0;
+  color: currentColor;
+  transition: transform 300ms ease;
+}
+
+.faq__list summary:has(+ .faq__answer.is-open) .faq__marker {
+  transform: rotate(90deg);
+}
+
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  padding-bottom: 0;
+  transition:
+    grid-template-rows 350ms ease,
+    padding-bottom 350ms ease;
+}
+
+.faq__answer.is-open {
+  grid-template-rows: 1fr;
   padding-bottom: 1.5rem;
+}
+
+.faq__answer > p {
+  max-width: 700px;
+  margin: 0;
   color: var(--color-muted);
+  overflow: hidden;
+  min-height: 0;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.faq__answer.is-open > p {
+  opacity: 1;
 }
 
 .contact {
@@ -1046,6 +1105,19 @@ h3 {
 
 .hero__content {
   max-width: 760px;
+  animation: hero-fade-up 900ms ease both;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .hero h1 {
@@ -1204,5 +1276,43 @@ h3 {
 
   .video-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Kept last so it wins the cascade over any animation/transition rule above,
+   regardless of source order. */
+@media (prefers-reduced-motion: reduce) {
+  .brand-carousel__track {
+    animation: none;
+  }
+
+  .brand-carousel {
+    overflow-x: auto;
+  }
+
+  .hero__content {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .video-card--enter {
+    animation: none;
+  }
+
+  .faq__answer {
+    transition: none;
+  }
+
+  .faq__answer > p {
+    transition: none;
+  }
+
+  .faq__marker {
+    transition: none;
   }
 }

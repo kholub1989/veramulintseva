@@ -326,8 +326,22 @@ filterButtons.forEach((button) => {
 });
 
 loadMoreButton?.addEventListener('click', () => {
+  const matchingCards = getMatchingVideoCards();
+  const previousVisibleCount = visibleVideoCount;
+
   visibleVideoCount += getVideosPerLoad();
   updateVideoGrid(true);
+
+  matchingCards
+    .slice(previousVisibleCount, visibleVideoCount)
+    .forEach((card) => {
+      card.classList.add('video-card--enter');
+      card.addEventListener(
+        'animationend',
+        () => card.classList.remove('video-card--enter'),
+        { once: true },
+      );
+    });
 });
 
 /**
@@ -403,6 +417,82 @@ portfolioVideos.forEach((video) => {
 });
 
 updateVideoGrid();
+
+// Scroll-reveal animation
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    });
+  },
+  {
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.15,
+  },
+);
+
+document.querySelectorAll('.reveal').forEach((element) => {
+  revealObserver.observe(element);
+});
+
+// FAQ open/close animation
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)',
+).matches;
+
+document.querySelectorAll('.faq__list details').forEach((details) => {
+  const summary = details.querySelector('summary');
+  const answerWrapper = details.querySelector('.faq__answer');
+
+  if (!summary || !answerWrapper) {
+    return;
+  }
+
+  summary.addEventListener('click', (event) => {
+    if (!details.open || prefersReducedMotion) {
+      return;
+    }
+
+    // Closing: let the collapse transition play before the browser
+    // hides the content, instead of it vanishing (and the rest of the
+    // page jumping) instantly.
+    event.preventDefault();
+    answerWrapper.classList.remove('is-open');
+    answerWrapper.addEventListener(
+      'transitionend',
+      () => {
+        details.open = false;
+      },
+      { once: true },
+    );
+  });
+
+  details.addEventListener('toggle', () => {
+    if (!details.open) {
+      return;
+    }
+
+    if (prefersReducedMotion) {
+      answerWrapper.classList.add('is-open');
+      return;
+    }
+
+    // Opening: the content just became rendered (collapsed, per the
+    // default CSS state). Wait a couple of frames so that collapsed
+    // state actually paints before expanding — otherwise there's
+    // nothing for the transition to animate from.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        answerWrapper.classList.add('is-open');
+      });
+    });
+  });
+});
 
 // Footer year
 const currentYear = document.querySelector(
