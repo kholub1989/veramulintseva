@@ -1,4 +1,5 @@
 import './css/styles.css';
+import emailjs from '@emailjs/browser';
 
 // Mobile navigation
 const navigationToggle = document.querySelector('.navigation-toggle');
@@ -504,3 +505,133 @@ if (currentYear) {
     new Date().getFullYear(),
   );
 }
+
+// Contact form (EmailJS)
+const EMAILJS_SERVICE_ID = 'service_0hjj12p';
+const EMAILJS_TEMPLATE_ID = 'template_cvhwwqh';
+const EMAILJS_PUBLIC_KEY = 'CQkkwIb2nnw4RgLI1';
+
+const CONTACT_MESSAGE_MIN_LENGTH = 2;
+const CONTACT_MESSAGE_MAX_LENGTH = 2000;
+
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+const contactForm = document.querySelector('#contact-form');
+const contactFormStatus = contactForm?.querySelector(
+  '[data-contact-form-status]',
+);
+const contactFormSubmit = contactForm?.querySelector(
+  '.contact-form__submit',
+);
+
+/**
+ * Shows the contact form's status message with a fade-in, or fades out and
+ * removes the current one from the layout when called with an empty message.
+ *
+ * @param {string} message
+ * @param {boolean} isError
+ * @returns {void}
+ */
+const setContactFormStatus = (message, isError) => {
+  if (!contactFormStatus) {
+    return;
+  }
+
+  if (!message) {
+    contactFormStatus.classList.remove('is-visible');
+    contactFormStatus.addEventListener(
+      'transitionend',
+      () => {
+        if (!contactFormStatus.classList.contains('is-visible')) {
+          contactFormStatus.hidden = true;
+        }
+      },
+      { once: true },
+    );
+    return;
+  }
+
+  contactFormStatus.textContent = message;
+  contactFormStatus.classList.toggle('is-error', isError);
+  contactFormStatus.hidden = false;
+
+  // Wait a frame so the hidden state actually paints before fading in,
+  // otherwise there's nothing for the transition to animate from.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      contactFormStatus.classList.add('is-visible');
+    });
+  });
+};
+
+/**
+ * Validates the contact form's fields, surfacing a clear message in the
+ * status region rather than relying on browser-default validation alone.
+ *
+ * @param {HTMLFormElement} form
+ * @returns {string|null} An error message, or null if the form is valid.
+ */
+const getContactFormError = (form) => {
+  const name = form.elements.name.value.trim();
+  const email = form.elements.email.value.trim();
+  const message = form.elements.message.value.trim();
+
+  if (!name) {
+    return 'Please enter your name.';
+  }
+
+  if (!email || !form.elements.email.checkValidity()) {
+    return 'Please enter a valid email address.';
+  }
+
+  if (message.length < CONTACT_MESSAGE_MIN_LENGTH) {
+    return 'Please enter a message.';
+  }
+
+  if (message.length > CONTACT_MESSAGE_MAX_LENGTH) {
+    return `Please keep your message under ${CONTACT_MESSAGE_MAX_LENGTH} characters.`;
+  }
+
+  return null;
+};
+
+contactForm?.addEventListener('input', () => {
+  if (contactFormStatus?.classList.contains('is-error')) {
+    setContactFormStatus('', false);
+  }
+});
+
+contactForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const validationError = getContactFormError(contactForm);
+
+  if (validationError) {
+    setContactFormStatus(validationError, true);
+    return;
+  }
+
+  if (contactFormSubmit) {
+    contactFormSubmit.disabled = true;
+  }
+
+  setContactFormStatus('Sending...', false);
+
+  emailjs
+    .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm)
+    .then(() => {
+      setContactFormStatus("Thanks! I'll get back to you soon.", false);
+      contactForm.reset();
+    })
+    .catch(() => {
+      setContactFormStatus(
+        'Something went wrong. Please try again or email me directly.',
+        true,
+      );
+    })
+    .finally(() => {
+      if (contactFormSubmit) {
+        contactFormSubmit.disabled = false;
+      }
+    });
+});
