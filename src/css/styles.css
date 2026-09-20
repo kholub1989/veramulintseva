@@ -464,6 +464,18 @@ h3 {
   background: #ddd;
 }
 
+/* Show the whole reel in fullscreen instead of cropping it to the screen. */
+.video-card video:fullscreen {
+  object-fit: contain;
+  background: #000;
+}
+
+/* Kept as a separate rule: an unknown selector would invalidate a grouped one. */
+.video-card video:-webkit-full-screen {
+  object-fit: contain;
+  background: #000;
+}
+
 .video-card__content {
   padding: 1rem;
 }
